@@ -25,6 +25,10 @@ WPSD Nextion is a set of Nextion HMI and TFT files for use with various TFT scre
 - [ ] Fill in Info Page
 - [ ] Get buttons working on main page
 
+## Credits / Software Used
+
+* FLAGCODE from Rob van Rheenen, PD0DIB
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
