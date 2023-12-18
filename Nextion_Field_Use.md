@@ -92,21 +92,19 @@ t1 : status || ERROR
 t2 : Local date & time
 
   screenLayout >2 :
-    t3  : ip address
-    t4  : owner call
-    t5  : owner ID
+    t3  : IP Address
+    t4  : Owner call sign
+    t5  : Owner DMR ID
     t30 : RX Frequency
     t32 : TX Frequency
     t20 : CPU Temperature
-    t31 : location
+    t31 : Location
 
   Nextion Driver only:
     t21     : CPU frequency
     t22     : CPU load average 1 min
     t23     : Disk free (in percent)
     cpuload : CPU load average 1 min
-
-
 
 DStar
 t0 : Type MY1 MY2
@@ -115,11 +113,10 @@ t2 : Reflector
 t3 : RSSI
 t4 : BER
 
-
 DMR
-t0 : Timeslot 1 source DMR ID / Call sign / TalkerAlias
+t0 : Timeslot 1 source DMR ID / Call sign / talkerAlias
 t1 : Timeslot 1 Destination
-t2 : Timeslot 2 source DMR ID / Call sign / TalkerAlias
+t2 : Timeslot 2 source DMR ID / Call sign / talkerAlias
 t3 : Timeslot 2 Destination
 t4 : Timeslot 1 RSSI
 t5 : Timeslot 2 RSSI
@@ -146,7 +143,6 @@ t7 : Timeslot 2 BER
     t21 : CSV lookup data TS1
     t22 : CSV lookup data TS1
 
-
 YSF
 t0 : Type, Source
 t1 : Destination
@@ -154,13 +150,11 @@ t2 : Source
 t3 : RSSI
 t4 : BER
 
-
 P25
 t0 : Type, Source
 t1 : Destination
 t2 : RSSI
 t3 : BER
-
 
 NXDN
 t0 : Type, Source
