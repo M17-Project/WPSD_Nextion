@@ -1,19 +1,19 @@
 # Nextion Field Use with NextionDriver and WPSD
 
-This document explains the basic status and text fields supplied by MMDVMHost from G4KLX, and NextionDriver from ON7LDS. Using this information, you can build your own Nextion HMI files for use with WPSD.
+This document explains the basic status and text fields supplied by [MMDVMHost from G4KLX](https://github.com/g4klx/MMDVMHost) (in the [`Nextion.cpp`](https://github.com/g4klx/MMDVMHost/blob/master/Nextion.cpp) file), and [NextionDriver from ON7LDS](https://github.com/on7lds/NextionDriver). Using this information, you can build your own Nextion HMI files for use with WPSD.
 
 Thank you to Jason KE7FNS who originally compiled this information and to Rob PD0DIB for providing the information.
 
 ## Page names
 
-* 0 page MMDVM
-* 1 page DStar
-* 2 page DMR
-* 3 page YSF
-* 4 page P25 
-* 5 page NXDN
-* 6 page POCSAG
-* 7 page M17
+0. MMDVM
+0. DStar
+0. DMR
+0. YSF
+0. P25 
+0. NXDN
+0. POCSAG
+0. M17
 
 ## MMDVM Status values
 
@@ -83,10 +83,11 @@ Thank you to Jason KE7FNS who originally compiled this information and to Rob PD
 134 : Waiting / Idle
 ```
 
-## Fields
+## Nextion Display Fields
+
+### MMDVM
 
 ```
-MMDVM
 t0 : Owner call sign & DMR ID || errortext LOCKOUT
 t1 : status || ERROR
 t2 : Local date & time
@@ -105,70 +106,91 @@ t2 : Local date & time
     t22     : CPU load average 1 min
     t23     : Disk free (in percent)
     cpuload : CPU load average 1 min
+```
 
-DStar
-t0 : Type MY1 MY2
-t1 : UR
-t2 : Reflector
-t3 : RSSI
-t4 : BER
+### DStar
 
-DMR
-t0 : Timeslot 1 source DMR ID / Call sign / talkerAlias
-t1 : Timeslot 1 Destination
-t2 : Timeslot 2 source DMR ID / Call sign / talkerAlias
-t3 : Timeslot 2 Destination
-t4 : Timeslot 1 RSSI
-t5 : Timeslot 2 RSSI
-t6 : Timeslot 1 BER
-t7 : Timeslot 2 BER
+```
+t0 : Type MY1 MY2 // char text[50U]; ::sprintf(text, "t0.txt=\"%s %.8s/%4.4s\"", type, my1, my2);
+t1 : UR           // char text[50U]; ::sprintf(text, "t1.txt=\"%.8s\"", your);
+t2 : Reflector    // char text[50U]; ::sprintf(text, "t2.txt=\"via %.8s\"", reflector);
+t3 : RSSI         // char text[25U]; ::sprintf(text, "t3.txt=\"-%udBm\"", m_rssiAccum1 / DSTAR_RSSI_COUNT);
+t4 : BER          // char text[25U]; ::sprintf(text, "t4.txt=\"%.1f%%\"", m_berAccum1 / float(DSTAR_BER_COUNT))
+```
 
-  screenLayout >2 :
-    t8  : Timeslot 2 type, talkerAlias
-    t9  : Timeslot 1 type, talkerAlias
+### DMR
 
-      Nextion Driver only:
-        t10 : Timeslot 1 TG name
-        t11 : Timeslot 2 TG name
+```
+t0 : Timeslot 1 source DMR ID / Call sign / talkerAlias // char text[50U]; ::sprintf(text, "t0.txt=\"1 %s %s\"", type, src.c_str());
+t1 : Timeslot 1 Destination                             // char text[50U]; ::sprintf(text, "t1.txt=\"%s%s\"", group ? "TG" : "", dst.c_str());
+t2 : Timeslot 2 source DMR ID / Call sign / talkerAlias // char text[50U]; ::sprintf(text, "t2.txt=\"2 %s %s\"", type, src.c_str());
+t3 : Timeslot 2 Destination                             // char text[50U]; ::sprintf(text, "t3.txt=\"%s%s\"", group ? "TG" : "", dst.c_str());
+t4 : Timeslot 1 RSSI                                    // char text[25U]; ::sprintf(text, "t4.txt=\"-%udBm\"", m_rssiAccum1 / DMR_RSSI_COUNT);
+t5 : Timeslot 2 RSSI                                    // char text[25U]; ::sprintf(text, "t4.txt=\"-%udBm\"", m_rssiAccum1 / DMR_RSSI_COUNT);
+t6 : Timeslot 1 BER                                     // char text[25U]; ::sprintf(text, "t6.txt=\"%.1f%%\"", m_berAccum1 / DMR_BER_COUNT);
+t7 : Timeslot 2 BER                                     // char text[25U]; ::sprintf(text, "t7.txt=\"%.1f%%\"", m_berAccum2 / DMR_BER_COUNT);
 
-    t12 : Not used?
-    t13 : CSV lookup data TS2
-    t14 : CSV lookup data TS2
-    t15 : CSV lookup data TS2
-    t16 : CSV lookup data TS2
-    t17 : CSV lookup data TS2
-    t18 : CSV lookup data TS1
-    t19 : CSV lookup data TS1
-    t20 : CSV lookup data TS1
-    t21 : CSV lookup data TS1
-    t22 : CSV lookup data TS1
+  screenLayout > 2 :
+    t8  : Timeslot 2 type, talkerAlias  // char text[50U]; ::sprintf(text, "t8.txt=\"%s %s\"", type, talkerAlias);
+    t9  : Timeslot 1 type, talkerAlias  // char text[50U]; ::sprintf(text, "t9.txt=\"%s %s\"", type, talkerAlias);
 
-YSF
-t0 : Type, Source
-t1 : Destination
-t2 : Source
-t3 : RSSI
-t4 : BER
+  Nextion Driver only:
+    t10 : Timeslot 1 TG name
+    t11 : Timeslot 2 TG name
 
-P25
-t0 : Type, Source
-t1 : Destination
-t2 : RSSI
-t3 : BER
+  t12 : Not used?
+  t13 : CSV lookup data TS2
+  t14 : CSV lookup data TS2
+  t15 : CSV lookup data TS2
+  t16 : CSV lookup data TS2
+  t17 : CSV lookup data TS2
+  t18 : CSV lookup data TS1
+  t19 : CSV lookup data TS1
+  t20 : CSV lookup data TS1
+  t21 : CSV lookup data TS1
+  t22 : CSV lookup data TS1
+```
 
-NXDN
-t0 : Type, Source
-t1 : Destination
-t2 : RSSI
-t3 : BER
+### YSF
 
-POCSAG
-t0 : Waiting || RIC
-t1 : Message
+```
+t0 : Type, Source // char text[30U]; ::sprintf(text, "t0.txt=\"%s %.10s\"", type, source);
+t1 : Destination  // char text[30U]; ::sprintf(text, "t1.txt=\"DG-ID %u\"", dgid);
+t2 : Source       // char text[30U]; ::sprintf(text, "t2.txt=\"at %.10s\"", origin);
+t3 : RSSI         // char text[25U]; ::sprintf(text, "t3.txt=\"-%udBm\"", m_rssiAccum1 / YSF_RSSI_COUNT);
+t4 : BER          // char text[25U]; ::sprintf(text, "t4.txt=\"%.1f%%\"", m_berAccum1 / float(YSF_BER_COUNT));
+```
 
-M17
-t0 : Type, Source
-t1 : Destination
-t2 : RSSI
-t3 : BER
+### P25
+
+```
+t0 : Type, Source // char text[30U]; ::sprintf(text, "t0.txt=\"%s %.10s\"", type, source);
+t1 : Destination  // char text[30U]; ::sprintf(text, "t1.txt=\"%s%u\"", group ? "TG" : "", dest);
+t2 : RSSI         // char text[25U]; ::sprintf(text, "t2.txt=\"-%udBm\"", m_rssiAccum1 / P25_RSSI_COUNT);
+t3 : BER          // char text[25U]; ::sprintf(text, "t3.txt=\"%.1f%%\"", m_berAccum1 / float(P25_BER_COUNT));
+```
+
+### NXDN
+
+```
+t0 : Type, Source // char text[30U]; ::sprintf(text, "t0.txt=\"%s %.10s\"", type, source);
+t1 : Destination  // char text[30U]; ::sprintf(text, "t1.txt=\"%s%u\"", group ? "TG" : "", dest);
+t2 : RSSI         // char text[25U]; ::sprintf(text, "t2.txt=\"-%udBm\"", m_rssiAccum1 / NXDN_RSSI_COUNT);
+t3 : BER          // char text[25U]; ::sprintf(text, "t3.txt=\"%.1f%%\"", m_berAccum1 / float(NXDN_BER_COUNT));
+```
+
+### POCSAG
+
+```
+t0 : Waiting || RIC // char text[200U]; ::sprintf(text, "t0.txt=\"RIC: %u\"", ric);
+t1 : Message        // char text[200U]; ::sprintf(text, "t1.txt=\"%s\"", message.c_str());
+```
+
+### M17
+
+```
+t0 : Type, Source // char text[30U]; ::sprintf(text, "t0.txt=\"%s %.10s\"", type, source);
+t1 : Destination  // char text[30U]; ::sprintf(text, "t1.txt=\"%s\"", dest);
+t2 : RSSI         // char text[25U]; ::sprintf(text, "t2.txt=\"-%udBm\"", m_rssiAccum1 / M17_RSSI_COUNT);
+t3 : BER          // char text[25U]; ::sprintf(text, "t3.txt=\"%.1f%%\"", m_berAccum1 / float(M17_BER_COUNT));
 ```
