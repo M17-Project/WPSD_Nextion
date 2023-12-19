@@ -25,7 +25,7 @@ page DStar
 t0.txt="N AA0NT"
 t1.txt="MY2"
 t2.txt="USE REFLECTOR"
-t3.txt="S9+40dB (-53 dBm)"
+t3.txt="-53 dBm"
 t4.txt="99.99%"
 ```
 
@@ -40,10 +40,16 @@ page DMR
 
 ```cpp
 page YSF
+t0.txt="Listening"
+t1.txt=""
+t2.txt=""
+t3.txt=""
+t4.txt=""
+delay=2000
 t0.txt="R AA0NT"
-t1.txt="_destination"
-t2.txt="_source"
-t3.txt="S9+40dB (-53 dBm)"
+t1.txt="DG-ID 0"
+t2.txt="at AA0NT/GW"
+t3.txt="-53 dBm"
 t4.txt="99.99%"
 ```
 
