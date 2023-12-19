@@ -10,7 +10,7 @@ Thank you to Jason KE7FNS who originally compiled this information and to Rob PD
 0. DStar
 0. DMR
 0. YSF
-0. P25 
+0. P25
 0. NXDN
 0. POCSAG
 0. M17
@@ -81,6 +81,11 @@ Thank you to Jason KE7FNS who originally compiled this information and to Rob PD
 132 : RIC
 133 : Message text
 134 : Waiting / Idle
+
+141 : M17 listening
+142 : Source
+143 : Destination
+144 : BER
 ```
 
 ## Nextion Display Fields
