@@ -1,23 +1,42 @@
-# WPSD Nextion
+# WPSD Nextion Screens
 
-WPSD Nextion is a set of Nextion HMI and TFT files for use with various TFT screens made by Nextion for WPSD based hotspots and repeaters.
+The WPSD Nextion repo is a set of Nextion HMI (source) and TFT (compiled) files for use with various TFT screens made by Nextion for WPSD-based hotspots and repeaters.
+
+## Currently Available Screens
+
+Model | Size | Notes
+---|---|---
+[NX4832K035_WPSD_3.5_Nextion](TFT/NX4832K035_WPSD_3.5_Nextion.tft) | 3.5" |
+[NX4827K043_WPSD_4.3_Nextion](TFT/NX4827K043_WPSD_4.3_Nextion.tft) | 4.3" |
+[NX8048K050_WPSD_5.0_Nextion](TFT/NX8048K050_WPSD_5.0_Nextion.tft) | 5.0" |
+[NX8048K050_WPSD_5.0_Nextion_HighSpeed](TFT/NX8048K050_WPSD_5.0_Nextion_HighSpeed.tft) | 5.0" | High Speed
+
 
 ## Installation
 
-* Use a microSD card formatted as FAT32
-  * **Recommended:** A microSD card no greater than 32 GB
-* Download the TFT file for your model of Nextion screen
-* Copy the TFT file to the microSD card
-  * The only file on the card should be the TFT file
-* Ensure the Nextion screen is powered off before inserting the microSD card
-* Insert the microSD card containing TFT file into the Nextion screen
-* Power on the Nextion screen with recommended clean power as per its Datasheet
-* Allow the Nextion device to upload the TFT file
-  * The upload may take several minutes, a progress bar will show while the upload is running
-* After the upload succeeds, power off the Nextion screen
-* Remove microSD card from the Nextion screen
-* Power on the Nextion with recommended clean power as per its Datasheet
-* Reattach the Nextion screen to your hotspot/repeater
+1. Use a microSD card no greater than 32 GB formatted as FAT32
+2. Download the TFT file for your model of the Nextion screen
+3. Copy the TFT file to the microSD card
+
+    :bulb:  The only file on the card should be the TFT file
+
+4. Insert the microSD card containing the TFT file into the Nextion screen
+
+    :exclamation:  Ensure you power down the Nextion screen before inserting the microSD card
+
+5. Power on the Nextion screen with recommended clean power as per its Datasheet
+
+6. Allow the Nextion device to upload the TFT file
+
+    :information_source: The upload may take several minutes; a progress bar will show while the upload is running
+
+6. After the upload succeeds, power off the Nextion screen
+
+7. Remove the microSD card from the Nextion screen
+
+8. *Optional*: Power on the Nextion as a test with recommended clean power as per its Datasheet
+
+9. Reattach the Nextion screen to your hotspot/repeater
 
 ## Roadmap
 
@@ -31,8 +50,7 @@ WPSD Nextion is a set of Nextion HMI and TFT files for use with various TFT scre
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
+Pull requests are welcome. For significant changes, please open an issue first to discuss what you want to change.
 
 Please make sure to update tests as appropriate.
 
