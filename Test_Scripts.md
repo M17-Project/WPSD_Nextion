@@ -33,7 +33,23 @@ t4.txt="99.99%"
 
 ```cpp
 page DMR
-
+t0.txt="1 Listening"
+t1.txt=""
+t4.txt=""
+t6.txt=""
+t2.txt="2 Listening"
+t3.txt=""
+t5.txt=""
+t7.txt=""
+delay=2000
+t0.txt="1 N AA0NT Lee"
+t1.txt="TG310997"
+t4.txt="-47dB"
+t6.txt="99.99%"
+t2.txt="2 N AA0NT LEE"
+t3.txt="TG310997"
+t5.txt="-45dB"
+t7.txt="99.99%"
 ```
 
 ## 3: YSF Screen
@@ -95,14 +111,5 @@ TODO
 
 ```cpp
 page Info
-
-```
-
-## 9: WPSD Screen
-
-TODO
-
-```cpp
-page WPSD
 
 ```
